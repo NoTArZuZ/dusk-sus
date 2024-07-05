@@ -39,8 +39,8 @@ static const double resizeopacity        = 0;   /* client opacity when being res
 static const double placeopacity         = 0;   /* client opacity when being placed, 0 means don't apply opacity */
 
 /* Indicators: see lib/bar_indicators.h for options */
-static int wsindicatortype               = INDICATOR_NONE;
-static int wspinnedindicatortype         = INDICATOR_NONE;
+static int wsindicatortype               = INDICATOR_TOP_RIGHT_TRIANGLE;
+static int wspinnedindicatortype         = INDICATOR_BOTTOM_BAR_SLIM;
 static int fakefsindicatortype           = INDICATOR_PLUS;
 static int floatfakefsindicatortype      = INDICATOR_PLUS_AND_LARGER_SQUARE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_LARGER_SQUARE;
@@ -149,19 +149,19 @@ unsigned int default_alphas[] = { OPAQUE, 0xd0U, OPAQUE };
 
 static char *colors[SchemeLast][4] = {
 	/*                       fg         bg         border    */
-	[SchemeNorm]         = { "#D9CFC5", "#000000", "#000000" },
-	[SchemeTitleNorm]    = { "#D9CFC5", "#000000", "#444444" },
-	[SchemeTitleSel]     = { "#D9CFC5", "#666666", "#666666" },
-	[SchemeScratchNorm]  = { "#D9CFC5", "#000000", "#444444" },
-	[SchemeScratchSel]   = { "#D9CFC5", "#666666", "#666666" },
-	[SchemeHidNorm]      = { "#D9CFC5", "#000000", "#000000" },
-	[SchemeHidSel]       = { "#D9CFC5", "#666666", "#000000" },
+	[SchemeNorm]         = { "#ffffff", "#000000", "#000000" },
+	[SchemeTitleNorm]    = { "#ffffff", "#000000", "#1c1f24" },
+	[SchemeTitleSel]     = { "#ffffff", "#c678dd", "#c678dd" },
+	[SchemeScratchNorm]  = { "#ffffff", "#000000", "#1c1f24" },
+	[SchemeScratchSel]   = { "#ffffff", "#c678dd", "#1c1f24" },
+	[SchemeHidNorm]      = { "#ffffff", "#000000", "#000000" },
+	[SchemeHidSel]       = { "#ffffff", "#666666", "#000000" },
 	[SchemeUrg]          = { "#E0E0E0", "#A23419", "#A23419" },
 	[SchemeMarked]       = { "#DDC470", "#724559", "#724559" },
-	[SchemeWsNorm]       = { "#D9CFC5", "#000000", "#000000" },
-	[SchemeWsVisible]    = { "#D9CFC5", "#000000", "#000000" },
-	[SchemeWsSel]        = { "#D9CFC5", "#666666", "#000000" },
-	[SchemeWsOcc]        = { "#D9CFC5", "#000000", "#000000" },
+	[SchemeWsNorm]       = { "#ffffff", "#000000", "#000000" },
+	[SchemeWsVisible]    = { "#ffffff", "#000000", "#000000" },
+	[SchemeWsSel]        = { "#ffffff", "#c678dd", "#000000" },
+	[SchemeWsOcc]        = { "#ffffff", "#000000", "#000000" },
 };
 
 /* List of programs to start automatically during startup only. Note that these will not be
@@ -215,16 +215,10 @@ static const Rule clientrules[] = {
 	{ .instance = "spterm (w)", .scratchkey = 'w', .flags = Floating },
 	{ .instance = "spterm (e)", .scratchkey = 'e', .flags = Floating },
 	{ .instance = "spfm (r)", .scratchkey = 'r', .flags = Floating },
-	{ .class = "Gimp", .workspace = "5", .flags = Floating|SwitchWorkspace },
-	{ .class = "firefox", .workspace = "8", .flags = AttachMaster|SwitchWorkspace },
 	{ .class = "Steam", .flags = Floating|Centered },
 	{ .class = "steam_app_", .flags = SteamGame|Floating|Centered },
-	{ .class = "Google-chrome", .role = "GtkFileChooserDialog", .floatpos = "50% 50%", .flags = AlwaysOnTop|Floating },
 	{ .role = "pop-up", .flags = AlwaysOnTop|Floating|Centered },
-	{ .role = "browser", .workspace = "8", .flags = AttachBelow|OnlyModButtons|SwitchWorkspace },
 	{ .class = "Gnome-terminal", .role = "gnome-terminal-preferences", .flags = Centered },
-	{ .class = "Diffuse", .workspace = "4", .flags = NoSwallow|SwitchWorkspace|RevertWorkspace },
-	{ .class = "File-roller", .workspace = "9", .flags = Centered|Floating|SwitchWorkspace|RevertWorkspace },
 	{ .class = "Alacritty", .flags = Terminal },
 	{ .class = "st-256color", .flags = Terminal|AttachBottom },
 	{ .class = "XTerm", .flags = Terminal },
