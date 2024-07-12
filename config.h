@@ -14,7 +14,7 @@ static unsigned int attachdefault        = AttachAside; // AttachMaster, AttachA
 
 static const int initshowbar             = 1;   /* 0 means no bar */
 
-static const int bar_height              = 0;   /* 0 means derive from font, >= 1 explicit height */
+static const int bar_height              = 20;   /* 0 means derive from font, >= 1 explicit height */
 static const int vertpad                 = borderpx;  /* vertical (outer) padding of bar */
 static const int sidepad                 = borderpx;  /* horizontal (outer) padding of bar */
 
@@ -34,7 +34,7 @@ static const char slopresizestyle[]      = "-t 0 -c 0.92,0.85,0.69,0.3"; /* do N
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const char *toggle_float_pos      = "50% 50% 80% 80%"; // default floating position when triggering togglefloating
 static const double defaultopacity       = 0;   /* client default opacity, e.g. 0.75. 0 means don't apply opacity */
-static const double moveopacity          = 0;   /* client opacity when being moved, 0 means don't apply opacity */
+static const double moveopacity          = 0.75;   /* client opacity when being moved, 0 means don't apply opacity */
 static const double resizeopacity        = 0;   /* client opacity when being resized, 0 means don't apply opacity */
 static const double placeopacity         = 0;   /* client opacity when being placed, 0 means don't apply opacity */
 
@@ -125,7 +125,7 @@ static int flexwintitle_hiddenweight     = 0;  // hidden window title weight
 static int flexwintitle_floatweight      = 0;  // floating window title weight, set to 0 to not show floating windows
 static int flexwintitle_separator        = 0;  // width of client separator
 
-static const char *fonts[]               = { "monospace:size=10" };
+static const char *fonts[]               = { "JetBrains Mono Nerd Font:size=10" };
 static       char dmenufont[60]          = "Ubuntu Bold:size=10";
 
 static char dmenunormfgcolor[] = "#D9CFC5";
@@ -149,19 +149,19 @@ unsigned int default_alphas[] = { OPAQUE, 0xd0U, OPAQUE };
 
 static char *colors[SchemeLast][4] = {
 	/*                       fg         bg         border    */
-	[SchemeNorm]         = { "#ffffff", "#000000", "#000000" },
-	[SchemeTitleNorm]    = { "#ffffff", "#000000", "#1c1f24" },
+	[SchemeNorm]         = { "#ffffff", "#282c34", "#000000" },
+	[SchemeTitleNorm]    = { "#ffffff", "#282c34", "#1c1f24" },
 	[SchemeTitleSel]     = { "#ffffff", "#c678dd", "#c678dd" },
-	[SchemeScratchNorm]  = { "#ffffff", "#000000", "#1c1f24" },
+	[SchemeScratchNorm]  = { "#ffffff", "#282c34", "#1c1f24" },
 	[SchemeScratchSel]   = { "#ffffff", "#c678dd", "#1c1f24" },
-	[SchemeHidNorm]      = { "#ffffff", "#000000", "#000000" },
-	[SchemeHidSel]       = { "#ffffff", "#666666", "#000000" },
+	[SchemeHidNorm]      = { "#ffffff", "#282c34", "#000000" },
+	[SchemeHidSel]       = { "#ffffff", "#c678dd", "#000000" },
 	[SchemeUrg]          = { "#E0E0E0", "#A23419", "#A23419" },
 	[SchemeMarked]       = { "#DDC470", "#724559", "#724559" },
-	[SchemeWsNorm]       = { "#ffffff", "#000000", "#000000" },
-	[SchemeWsVisible]    = { "#ffffff", "#000000", "#000000" },
+	[SchemeWsNorm]       = { "#ffffff", "#282c34", "#000000" },
+	[SchemeWsVisible]    = { "#ffffff", "#282c34", "#000000" },
 	[SchemeWsSel]        = { "#ffffff", "#c678dd", "#000000" },
-	[SchemeWsOcc]        = { "#ffffff", "#000000", "#000000" },
+	[SchemeWsOcc]        = { "#ffffff", "#282c34", "#000000" },
 };
 
 /* List of programs to start automatically during startup only. Note that these will not be
@@ -169,7 +169,7 @@ static char *colors[SchemeLast][4] = {
 static const char *const autostart[] = {
 //	"st", NULL,
 	"slstatus", NULL,
-	"xrdb", "-merge", "/home/sus/.Xresources", NULL,
+	"picom", "--vsync", "-b", NULL,
 	NULL /* terminate */
 };
 
@@ -358,11 +358,11 @@ static const BarRule barrules[] = {
 static const WorkspaceRule wsrules[] = {
 	/*                                                                     ------------------------------- schemes ------------------------------- ------ icons ------
 	   name,  monitor,  pinned,  layout,  mfact,  nmaster,  nstack,  gaps, default,          visible,          selected,         occupied,         def,   vac,  occ,  */
-	{  "1",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "1",   "",   "1", },
-	{  "2",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "2",   "",   "2", },
-	{  "3",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "3",   "",   "3", },
-	{  "4",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "4",   "",   "4", },
-	{  "5",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "5",   "",   "5", },
+	{  "1",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "",   "",   "", },
+	{  "2",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "󰈹",   "",   "󰈹", },
+	{  "3",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "󰙯",   "",   "󰙯", },
+	{  "4",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "",   "",   "", },
+	{  "5",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "󰆋",   "",   "󰆋", },
 //	{  "6",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "6",   "",   "6", },
 //	{  "7",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "7",   "",   "7", },
 //	{  "8",   -1,       0,       0,       -1,    -1,       -1,      -1,    SchemeWsNorm,     SchemeWsVisible,  SchemeWsSel,      SchemeWsOcc,      "8",   "",   "8", },
@@ -377,23 +377,23 @@ static const int enablegaps  = 0;    /* whether gaps are enabled by default or n
 /* layout(s) */
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis, symbol func }, name */
-	{ " | []= ",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL }, "tile" },
-	{ " | ||| ",      flextile,         { -1, -1, NO_SPLIT, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL }, "columns" },
-	{ " | === ",      flextile,         { -1, -1, NO_SPLIT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL }, "rows" },
-	{ " | [M] ",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL }, "monocle" },
-	{ " | ||= ",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL }, "col" },
-	{ " | >M> ",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL }, "floating master" },
-	{ " | [D] ",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL }, "deck" },
-	{ " | TTT ",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL }, "bstack" },
-	{ " | === ",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL }, "bstackhoriz" },
-	{ " | ==# ",      flextile,         { -1, -1, SPLIT_HORIZONTAL, TOP_TO_BOTTOM, GAPPLESSGRID_CFACTS, 0, NULL }, "bstackgrid" },
-	{ " | |M| ",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL }, "centeredmaster" },
-	{ " | -M- ",      flextile,         { -1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL }, "centeredmaster horiz" },
-	{ " | ::: ",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID_CFACTS, GAPPLESSGRID_CFACTS, 0, NULL }, "gappless grid" },
-	{ " | [\\] ",     flextile,         { -1, -1, NO_SPLIT, DWINDLE_CFACTS, DWINDLE_CFACTS, 0, NULL }, "fibonacci dwindle" },
-	{ " | (@) ",      flextile,         { -1, -1, NO_SPLIT, SPIRAL_CFACTS, SPIRAL_CFACTS, 0, NULL }, "fibonacci spiral" },
-	{ " | [T] ",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI_CFACTS, 0, NULL }, "tatami mats" },
-	{ " | ><> ",      NULL,             { -1, -1 }, "floating" }, /* no layout function means floating behavior */
+	{ " ┇   ",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL }, "tile" },
+	{ " ┇ ||| ",      flextile,         { -1, -1, NO_SPLIT, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL }, "columns" },
+	{ " ┇ === ",      flextile,         { -1, -1, NO_SPLIT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL }, "rows" },
+	{ " ┇ [M] ",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL }, "monocle" },
+	{ " ┇ ||= ",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL }, "col" },
+	{ " ┇ >M> ",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL }, "floating master" },
+	{ " ┇ [D] ",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL }, "deck" },
+	{ " ┇ TTT ",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL }, "bstack" },
+	{ " ┇ === ",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL }, "bstackhoriz" },
+	{ " ┇ ==# ",      flextile,         { -1, -1, SPLIT_HORIZONTAL, TOP_TO_BOTTOM, GAPPLESSGRID_CFACTS, 0, NULL }, "bstackgrid" },
+	{ " ┇ |M| ",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL }, "centeredmaster" },
+	{ " ┇ -M- ",      flextile,         { -1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL }, "centeredmaster horiz" },
+	{ " ┇ ::: ",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID_CFACTS, GAPPLESSGRID_CFACTS, 0, NULL }, "gappless grid" },
+	{ " ┇ [\\] ",     flextile,         { -1, -1, NO_SPLIT, DWINDLE_CFACTS, DWINDLE_CFACTS, 0, NULL }, "fibonacci dwindle" },
+	{ " ┇ (@) ",      flextile,         { -1, -1, NO_SPLIT, SPIRAL_CFACTS, SPIRAL_CFACTS, 0, NULL }, "fibonacci spiral" },
+	{ " ┇ [T] ",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI_CFACTS, 0, NULL }, "tatami mats" },
+	{ " ┇ ><> ",      NULL,             { -1, -1 }, "floating" }, /* no layout function means floating behavior */
 };
 
 #define Shift ShiftMask
@@ -455,7 +455,7 @@ static const char *dmenucmd[] = {
 };
 static const char *spcmd_w[] = {"w", "st", "-n", "spterm (w)", "-g", "120x34", NULL };
 static const char *spcmd_e[] = {"e", "st", "-n", "spterm (e)", "-g", "120x34", NULL };
-static const char *spcmd_r[] = {"r", "st", "-n", "spfm (r)", "-g", "144x41", "-e", "ranger", NULL };
+static const char *spcmd_r[] = {"r", "st", "-n", "spfm (r)", "-g", "144x41", "-e", "yazi", NULL };
 static const char *statusclickcmd[] = { "~/bin/statusbar/statusclick.sh", NULL };
 
 static Key keys[] = {
@@ -754,3 +754,5 @@ static IPCCommand ipccommands[] = {
 	IPCCOMMAND( xrdb, ARG_TYPE_NONE ), // reload xrdb / Xresources
 	IPCCOMMAND( zoom, ARG_TYPE_NONE ),
 };
+
+#define GLOBAL_HZ 144
