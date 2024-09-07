@@ -8,7 +8,7 @@ static const unsigned int gappiv         = 12;   /* vert inner gap between windo
 static const unsigned int gappoh         = 12;   /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 12;   /* vert outer gap between windows and screen edge */
 static const unsigned int gappfl         = 0;   /* gap between floating windows (when relevant) */
-static const unsigned int smartgaps_fact = 20;   /* smartgaps factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const unsigned int smartgaps_fact = 0;   /* smartgaps factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 
 static unsigned int attachdefault        = AttachAside; // AttachMaster, AttachAbove, AttachAside, AttachBelow, AttachBottom
 
@@ -76,7 +76,7 @@ static uint64_t functionality = 0
 //	|BanishMouseCursor // like xbanish, hides mouse cursor when using the keyboard
 //	|BanishMouseCursorToCorner // makes BanishMouseCursor move the cursor to the top right corner of the screen
 //	|SmartGaps // enables no or increased gaps if there is only one visible window
-//	|SmartGapsMonocle // enforces no gaps in monocle layout
+	|SmartGapsMonocle // enforces no gaps in monocle layout
 	|Systray // enables a systray in the bar
 //	|SystrayNoAlpha // disables the use of transparency for the systray, enable if you do not use a compositor
 	|Swallow // allows X applications started from the command line to swallow the terminal
@@ -90,7 +90,7 @@ static uint64_t functionality = 0
 //	|Status2DNoAlpha // option to not use alpha when drawing status2d status
 //	|BarBorder // draw a border around the bar
 //	|BarPadding // add vertical and side padding as per vertpad and sidepad variables above
-//	|NoBorders // as per the noborder patch, show no border when only one client in tiled mode
+	|NoBorders // as per the noborder patch, show no border when only one client in tiled mode
 //	|Warp // warp cursor to currently focused window
 //	|DecorationHints // omit drawing the window border if the applications asks not to
 //	|FocusedOnTop // allows focused window to stay on top of other windows
