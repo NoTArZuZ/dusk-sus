@@ -3,12 +3,12 @@
 /* appearance */
 static const unsigned int borderpx       = 1;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
-static const unsigned int gappih         = 0;   /* horiz inner gap between windows */
-static const unsigned int gappiv         = 0;   /* vert inner gap between windows */
-static const unsigned int gappoh         = 0;   /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 0;   /* vert outer gap between windows and screen edge */
+static const unsigned int gappih         = 12;   /* horiz inner gap between windows */
+static const unsigned int gappiv         = 12;   /* vert inner gap between windows */
+static const unsigned int gappoh         = 12;   /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 12;   /* vert outer gap between windows and screen edge */
 static const unsigned int gappfl         = 0;   /* gap between floating windows (when relevant) */
-static const unsigned int smartgaps_fact = 0;   /* smartgaps factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const unsigned int smartgaps_fact = 20;   /* smartgaps factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 
 static unsigned int attachdefault        = AttachAside; // AttachMaster, AttachAbove, AttachAside, AttachBelow, AttachBottom
 
@@ -90,7 +90,7 @@ static uint64_t functionality = 0
 //	|Status2DNoAlpha // option to not use alpha when drawing status2d status
 //	|BarBorder // draw a border around the bar
 //	|BarPadding // add vertical and side padding as per vertpad and sidepad variables above
-	|NoBorders // as per the noborder patch, show no border when only one client in tiled mode
+//	|NoBorders // as per the noborder patch, show no border when only one client in tiled mode
 //	|Warp // warp cursor to currently focused window
 //	|DecorationHints // omit drawing the window border if the applications asks not to
 //	|FocusedOnTop // allows focused window to stay on top of other windows
@@ -372,7 +372,7 @@ static const WorkspaceRule wsrules[] = {
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int nstack      = 0;    /* number of clients in primary stack area */
-static const int enablegaps  = 0;    /* whether gaps are enabled by default or not */
+static const int enablegaps  = 1;    /* whether gaps are enabled by default or not */
 
 /* layout(s) */
 static const Layout layouts[] = {
@@ -634,8 +634,8 @@ static Button buttons[] = {
 	{ ClkClientWin,              MODKEY|Alt,              Button2,        togglefloating,   {0} }, // toggles between tiled and floating arrangement for given client
 	{ ClkClientWin,              MODKEY,                  Button3,        resizeorfacts,    {0} }, // change the size of a floating client window or adjust cfacts and mfacts when tiled
 	{ ClkClientWin,              MODKEY|Shift,            Button3,        resizemouse,      {0} }, // change the size of a floating client window
-	{ ClkClientWin,              0,                       Button8,        movemouse,        {0} }, // move a client window using extra mouse buttons (previous)
-	{ ClkClientWin,              0,                       Button9,        resizemouse,      {0} }, // resize a client window using extra mouse buttons (next)
+//	{ ClkClientWin,              0,                       Button8,        movemouse,        {0} }, // move a client window using extra mouse buttons (previous)
+//	{ ClkClientWin,              0,                       Button9,        resizemouse,      {0} }, // resize a client window using extra mouse buttons (next)
 	{ ClkClientWin,              MODKEY,                  Button2,        zoom,             {0} }, // moves the currently focused window to/from the master area (for tiled layouts)
 	{ ClkClientWin,              MODKEY|Ctrl,             Button1,        dragmfact,        {0} }, // dynamically change the size of the master area compared to the stack area(s)
 	{ ClkRootWin,                MODKEY|Ctrl,             Button1,        dragmfact,        {0} }, // dynamically change the size of the master area compared to the stack area(s)
